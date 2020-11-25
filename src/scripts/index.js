@@ -37,7 +37,7 @@ console.log("webpack starterkit");
 // let spread = "abcdefg"; // note string is iterable
 // startCars(...spread); // spread operator
 
-// // tpeof
+// // typeof
 // console.log(typeof 1);
 // console.log(typeof true);
 // console.log(typeof "abc");
@@ -142,7 +142,7 @@ console.log("webpack starterkit");
 //   },
 // };
 // let newCar = { carId: 456 };
-// let newFn = o.getId.bind(newCar); // copy getId and bind to new context
+// let newFn = o.getId.bind(newCar); // copy getId and bind to new context (newCar is now 'this')
 // console.log(newFn());
 
 // // arrow function
@@ -150,6 +150,7 @@ console.log("webpack starterkit");
 //   return prefix + 123 + suffix;
 // };
 // console.log(getId("Id: ", "!"));
+// console.log(this); // undefined (arrow function have no context)
 
 // // default parameters
 // let trackCar = (carId, city = "NY") => {
@@ -158,7 +159,7 @@ console.log("webpack starterkit");
 // trackCar(123);
 // trackCar(123, "Chicago");
 
-// constructor functions
+// // constructor functions
 // function Car() {
 //   console.log(this);
 // }
@@ -183,29 +184,62 @@ console.log("webpack starterkit");
 // let vehicle = new Car(123);
 // vehicle.start();
 
-// array iteration
-let carIds = [
-  {
-    carId: 123,
-    style: "sedan",
-  },
-  {
-    carId: 456,
-    style: "convertible",
-  },
-  {
-    carId: 789,
-    style: "suv",
-  },
-];
-carIds.forEach((car) => console.log(car));
-carIds.forEach((car, index) => console.log(car, index));
+// // array iteration
+// let carIds = [
+//   {
+//     carId: 123,
+//     style: "sedan",
+//   },
+//   {
+//     carId: 456,
+//     style: "convertible",
+//   },
+//   {
+//     carId: 789,
+//     style: "suv",
+//   },
+// ];
+// carIds.forEach((car) => console.log(car));
+// carIds.forEach((car, index) => console.log(car, index));
 
-let convertibles = carIds.filter((car) => car.style === "convertible");
-console.log(convertibles);
+// let convertibles = carIds.filter((car) => car.style === "convertible");
+// console.log(convertibles);
 
-let result = carIds.every((car) => car.carId);
-console.log(result);
+// let result = carIds.every((car) => car.carId);
+// console.log(result);
 
-let find = carIds.find((car) => car.carId > 500);
-console.log(find);
+// let find = carIds.find((car) => car.carId > 500);
+// console.log(find);
+
+// classes
+// class Car {
+//   constructor(id) {
+//     this.id = id;
+//   }
+//   identify() {
+//     return `Car id; ${this.id}`;
+//   }
+// }
+// let car = new Car(123);
+// console.log(car, car.id);
+// console.log(car.identify());
+
+// class inheritance
+// class Vehicle {
+//   constructor() {
+//     this.type = "car";
+//   }
+//   start() {
+//     return `this: ${this.type}`;
+//   }
+// }
+// class Car extends Vehicle {
+//   constructor() {
+//     super();
+//   }
+//   start() {
+//     return "blah " + super.start();
+//   }
+// }
+// let car = new Car();
+// console.log(car.start());
